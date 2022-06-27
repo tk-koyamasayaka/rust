@@ -1,43 +1,23 @@
-use rand::Rng;
-use std::cmp::Ordering;
-use std::io; // 乱数生成のためのメソッドを定義
+use std::io;
 
 fn main() {
-    println!("Guess the number!");
+    let a: [i32; 5] = [1, 2, 3, 4, 5];
 
-    /*
-     * thread_rng -> Rngトレイトの中で定義されている
-     * 1..101 -> 開始..終了(1 <= x < 101 の意味)
-     * 1.=100 これでもいい
-     */
-    let secret_number = rand::thread_rng().gen_range(1..101);
+    // 配列の何番目の要素にアクセスするか指定してください
+    println!("Please enter an array index.");
 
-    println!("秘密の数字は次の通りだよ {} ", secret_number);
+    let mut index = String::new();
 
-    loop {
-        println!("数字をに入力してね");
+    io::stdin().read_line(&mut index).expect("エラーなんだが");
 
-        let mut guess = String::new();
+    let index: usize = index.trim().parse().expect("ダメだった");
 
-        io::stdin()
-            .read_line(&mut guess)
-            .expect("Failed to read line");
+    let element = a[index];
 
-         // ResultがOkとErrの列挙子を持つ列挙型
-        let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
-            Err(_) => continue,
-        };
-
-        println!("あなたが決めた数字 {}", guess);
-
-        match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Too small!"),
-            Ordering::Greater => println!("Too big!"),
-            Ordering::Equal => {
-                println!("You win!");
-                break;
-            } 
-        }
-    }
+    println!(
+        "The value of the element at index {} is: {}",
+        // {}番目の要素の値は{}です
+        index,
+        element
+    );
 }
