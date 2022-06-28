@@ -1,23 +1,12 @@
-use std::io;
-
 fn main() {
-    let a: [i32; 5] = [1, 2, 3, 4, 5];
+    let s1 = String::from("hello");
 
-    // 配列の何番目の要素にアクセスするか指定してください
-    println!("Please enter an array index.");
+    let len = calculate_length(&s1);
 
-    let mut index = String::new();
+    // '{}'の長さは、{}です
+    println!("The length of '{}' is {}.", s1, len);
+}
 
-    io::stdin().read_line(&mut index).expect("エラーなんだが");
-
-    let index: usize = index.trim().parse().expect("ダメだった");
-
-    let element = a[index];
-
-    println!(
-        "The value of the element at index {} is: {}",
-        // {}番目の要素の値は{}です
-        index,
-        element
-    );
+fn calculate_length(s: &String) -> usize {
+    s.len()
 }
