@@ -1,11 +1,19 @@
+// 構造体を定義し、インスタンス化する
+
 fn main() {
-    let a = no_dangle();
-    
-    println!("{}", a)
+    let width1 = 30;
+    let height1 = 50;
+
+    println!(
+        // 長方形の面積は、{}平方ピクセルです
+        "The area of the rectangle is {} square pixels.",
+        area(width1, height1)
+    );
 }
 
-fn no_dangle() -> String {
-    let s = String::from("hello");
-
-    s
+fn area(width: u32, height: u32) -> u32 {
+    width * height
 }
+
+
+// TODO タプルでリファクタリングする
