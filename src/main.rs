@@ -1,4 +1,4 @@
-// 構造体を定義し、インスタンス化する
+// メソッドを定義する
 #[derive(Debug)]
 struct Rectangle {
     width: u32,
@@ -15,5 +15,5 @@ impl Rectangle {
 fn main() {
     let rect1 = Rectangle { width: 30, height: 50 };
 
-    println!("rect1 is {:#?}", rect1.area());
+    println!("The area of the rectangle is {} square pixels.", rect1.area());
 }
